@@ -56,8 +56,9 @@ const columns = [
     sortable: true,
   },
   {
-      name: 'Email',
-      selector: 'email'
+    name: 'Details',
+    button: true,
+    cell: () => <button className="btn"><i class="fas fa-eye"></i></button>,
   }
 ];
 
@@ -98,12 +99,13 @@ export default function Datatable() {
                 subHeader
                 subHeaderComponent={subHeaderComponentMemo}
 
+                noDataComponent={<NoData />}
+
                 compact={true}
                 responsive={true}
                 compact={true}
                 pagination={true}
                 striped={true}
-                pointerOnHover={true}
                 highlightOnHover={true}
                 direction="left"
             />
@@ -111,4 +113,12 @@ export default function Datatable() {
             
         </>
     )
+}
+
+const NoData = () => {
+  return(
+    <>
+      <p>Não há registros para exibir</p>
+    </>
+  );  
 }
